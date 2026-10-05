@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Snowflake local credentials
+.snowflake/
+connections.toml
+config.toml
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated synthetic data
+data/synthetic/*.csv
+data/synthetic/*.parquet
+!data/synthetic/.gitkeep
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# Logs / temporary output
+*.log
+tmp/
+temp/
+
+# Node / TypeScript
+node_modules/
+coverage/
+
+# Streamlit local secrets
+.streamlit/secrets.toml
