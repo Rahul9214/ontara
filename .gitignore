@@ -39,6 +39,9 @@ data/synthetic/*.csv
 data/synthetic/*.parquet
 !data/synthetic/.gitkeep
 
+# Reproducible synthetic dataset build artifacts
+data/synthetic/generated/
+
 # Build / packaging
 build/
 dist/
