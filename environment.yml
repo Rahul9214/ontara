@@ -1,0 +1,9 @@
+name: ontara-streamlit
+
+channels:
+  - snowflake
+
+dependencies:
+  - streamlit=1.52.2
+  - pandas=2.*
+  - snowflake-snowpark-python
