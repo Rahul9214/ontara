@@ -1,0 +1,64 @@
+-- Ontara least-privileged MCP access role.
+--
+-- This role can:
+-- - connect to ONTARA_MCP
+-- - invoke exactly the five MCP wrapper procedures
+-- - use ONTARA_WH for those GENERIC tools
+--
+-- It receives no direct table access, no arbitrary SQL capability,
+-- and no approval/status-transition procedures.
+
+USE ROLE ACCOUNTADMIN;
+
+CREATE ROLE IF NOT EXISTS ONTARA_MCP_ROLE
+    COMMENT = 'Least-privileged role for Ontara governed MCP access.';
+
+GRANT USAGE
+    ON WAREHOUSE ONTARA_WH
+    TO ROLE ONTARA_MCP_ROLE;
+
+GRANT USAGE
+    ON DATABASE ONTARA
+    TO ROLE ONTARA_MCP_ROLE;
+
+GRANT USAGE
+    ON SCHEMA ONTARA.APP
+    TO ROLE ONTARA_MCP_ROLE;
+
+GRANT USAGE
+    ON MCP SERVER ONTARA.APP.ONTARA_MCP
+    TO ROLE ONTARA_MCP_ROLE;
+
+GRANT USAGE
+    ON PROCEDURE ONTARA.APP.MCP_GET_GOVERNED_METRIC(VARCHAR)
+    TO ROLE ONTARA_MCP_ROLE;
+
+GRANT USAGE
+    ON PROCEDURE ONTARA.APP.MCP_GET_SUPPLIER_BLAST_RADIUS(VARCHAR)
+    TO ROLE ONTARA_MCP_ROLE;
+
+GRANT USAGE
+    ON PROCEDURE ONTARA.APP.MCP_GET_OPERATIONAL_HEALTH(
+        VARCHAR,
+        VARCHAR,
+        VARCHAR,
+        VARCHAR
+    )
+    TO ROLE ONTARA_MCP_ROLE;
+
+GRANT USAGE
+    ON PROCEDURE ONTARA.APP.MCP_GET_SUPPLY_EXCEPTION(VARCHAR)
+    TO ROLE ONTARA_MCP_ROLE;
+
+GRANT USAGE
+    ON PROCEDURE ONTARA.APP.MCP_REQUEST_SUPPLY_EXCEPTION(
+        VARCHAR,
+        VARCHAR,
+        VARCHAR,
+        VARCHAR
+    )
+    TO ROLE ONTARA_MCP_ROLE;
+
+-- Grant this narrowly scoped role to the existing Snowflake user.
+GRANT ROLE ONTARA_MCP_ROLE
+    TO USER "rahsonu2u";
