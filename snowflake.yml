@@ -1,0 +1,30 @@
+definition_version: 2
+
+entities:
+  ontara_streamlit:
+    type: streamlit
+
+    identifier:
+      name: ONTARA_APP
+      database: ONTARA
+      schema: APP
+
+    title: Ontara - Governed Supply Chain Intelligence
+
+    comment: >-
+      Governed supply-chain analytics, ontology blast radius,
+      semantic contract verification, and human-approved actions.
+
+    stage: ONTARA.APP.ONTARA_STREAMLIT_STAGE
+
+    query_warehouse: ONTARA_WH
+
+    runtime_name: "SYSTEM$WAREHOUSE_RUNTIME"
+
+    main_file: streamlit_app.py
+
+    artifacts:
+      - streamlit_app.py
+      - environment.yml
+      - src: ontara_app/*.py
+        dest: ontara_app/

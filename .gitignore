@@ -58,3 +58,4 @@ coverage/
 
 # Streamlit local secrets
 .streamlit/secrets.toml
+output/
